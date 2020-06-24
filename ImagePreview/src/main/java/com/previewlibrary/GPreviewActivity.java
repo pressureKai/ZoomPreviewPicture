@@ -49,6 +49,7 @@ public class GPreviewActivity extends FragmentActivity {
     private GPreviewBuilder.IndicatorType type;
     /***默认显示***/
     private boolean isShow = true;
+    private  Class<? extends BasePhotoFragment> mClassName;
 
     @CallSuper
     @Override
@@ -118,6 +119,7 @@ public class GPreviewActivity extends FragmentActivity {
      * @param className    显示Fragment
      **/
     protected void iniFragment(List<IThumbViewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
+        mClassName = className
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
@@ -276,7 +278,8 @@ public class GPreviewActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return fragments.get(position);
+            return BasePhotoFragment.
+                        getInstance(mClassName, imgUrls.get(i);
         }
 
         @Override
