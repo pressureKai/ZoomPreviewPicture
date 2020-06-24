@@ -120,19 +120,10 @@ public class GPreviewActivity extends FragmentActivity {
      **/
     protected void iniFragment(List<IThumbViewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
         mClassName = className
-        if (imgUrls != null) {
-            int size = imgUrls.size();
-            for (int i = 0; i < size; i++) {
-                fragments.add(BasePhotoFragment.
-                        getInstance(className, imgUrls.get(i),
-                        currentIndex == i,
-                                getIntent().getBooleanExtra("isSingleFling", false),
-                                getIntent().getBooleanExtra("isDrag", false),
-                                getIntent().getFloatExtra("sensitivity", 0.5f))
-                               );
-            }
-        } else {
-            finish();
+        if (imgUrls == null) {
+            
+          finish();
+           
         }
     }
 
@@ -284,7 +275,7 @@ public class GPreviewActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return fragments == null ? 0 : fragments.size();
+            return imgUrls == null ? 0 : imgUrls.size();
         }
 
     }
